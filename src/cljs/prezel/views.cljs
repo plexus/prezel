@@ -1,9 +1,20 @@
 (ns prezel.views
-  (:require [re-frame.core :as re-frame :refer [subscribe dispatch]]
-            [reagent.core :as r]))
+  (:require [prezel.logos :as logos]
+            [prezel.slides :as slides]
+            [prezel.helpers :refer [<sub >evt]]))
 
-(def <sub (comp deref subscribe))
-(def >evt dispatch)
+
+(defn slide [& children]
+  (into [:section.slide] children))
+
+(defn select-slide [children]
+  (nth children (<sub [:slides/selected])))
+
+
 
 (defn main-panel []
-  [:div.app (<sub [:name])])
+
+  [:div.w-100.h-100.bg-black.avenir.dark-gray
+   [:div.fixed-1920x1080.bg-white {:style {:transform (str "scale(" (<sub [:slides/scale]) ")")}}
+    [select-slide (slides/all-slides)]]
+   [:link {:rel "stylesheet" :href (<sub [:hljs/stylesheet])}]])

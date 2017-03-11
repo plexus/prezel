@@ -27,7 +27,8 @@
                  [cljs-ajax "0.5.8"]
                  [day8.re-frame/http-fx "0.1.3"]
                  [re-frisk "0.3.2"]
-                 [cljs-ajax "0.5.8"]]
+                 [cljs-ajax "0.5.8"]
+                 [cljfmt "0.5.6"]]
 
   :plugins [[lein-environ "1.1.0"]
             [lein-cljsbuild "1.1.5"]]
